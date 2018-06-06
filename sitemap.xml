@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://bnbdr.github.io/posts/second-post/</loc>
+    <lastmod>2018-06-05T15:50:05+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/posts/sample-post/</loc>
+    <lastmod>2018-06-05T15:25:39+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/</loc>
+    <lastmod>2018-06-05T15:50:05+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/tags/ha-ha/</loc>
+    <lastmod>2018-06-05T15:25:39+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/tags/money/</loc>
+    <lastmod>2018-06-05T15:50:05+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/tags/nothing/</loc>
+    <lastmod>2018-06-05T15:50:05+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/posts/</loc>
+    <lastmod>2018-06-05T15:50:05+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/tags/somethingelse/</loc>
+    <lastmod>2018-06-05T15:25:39+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://bnbdr.github.io/tags/</loc>
+    <lastmod>2018-06-05T15:25:39+03:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

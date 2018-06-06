@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on :3</title>
+    <link>https://bnbdr.github.io/tags/</link>
+    <description>Recent content in Tags on :3</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 05 Jun 2018 15:25:39 +0300</lastBuildDate>
+    
+	<atom:link href="https://bnbdr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ha Ha</title>
+      <link>https://bnbdr.github.io/tags/ha-ha/</link>
+      <pubDate>Tue, 05 Jun 2018 15:25:39 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/ha-ha/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Money</title>
+      <link>https://bnbdr.github.io/tags/money/</link>
+      <pubDate>Tue, 05 Jun 2018 15:50:05 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/money/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nothing</title>
+      <link>https://bnbdr.github.io/tags/nothing/</link>
+      <pubDate>Tue, 05 Jun 2018 15:50:05 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/nothing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Somethingelse</title>
+      <link>https://bnbdr.github.io/tags/somethingelse/</link>
+      <pubDate>Tue, 05 Jun 2018 15:25:39 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/somethingelse/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
