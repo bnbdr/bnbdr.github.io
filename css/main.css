@@ -612,8 +612,16 @@ section.main .content .markdown code,
 section.main .content .markdown pre {
   font-family: 'Ubuntu Mono', 'Menlo', monospace;
   font-size: 1rem;
-  /* background-color: #f7f7f7; */
+  background-color: #eee;
+  /* default color */
+    color: #702a2a; 
 }
+section.main .content .markdown div.highlight code,
+  section.main .content .markdown div.highlight pre{
+  color: #f8f8f2;  /* default color when syntax doesnt have anything*/
+  background-color: inherit !important; /*so syntax would take over*/
+}
+
 section.main .content .markdown code {
   /* enclosed by single backtick (`) */
   padding: .15em .5em;
@@ -736,7 +744,7 @@ section.main .content .markdown tbody tr:nth-child(odd) th {
   margin-bottom: 48px;
 }
 #tags-single .posttag {
-  display:inline;
+  display:inline-block;
   
 }
 #tags-single a.tag{

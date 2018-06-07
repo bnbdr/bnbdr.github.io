@@ -6,44 +6,44 @@
     <description>Recent content in Tags on :3</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 05 Jun 2018 15:25:39 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 06 Jun 2018 15:43:53 +0300</lastBuildDate>
     
 	<atom:link href="https://bnbdr.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Ha Ha</title>
-      <link>https://bnbdr.github.io/tags/ha-ha/</link>
-      <pubDate>Tue, 05 Jun 2018 15:25:39 +0300</pubDate>
+      <title>Exploit</title>
+      <link>https://bnbdr.github.io/tags/exploit/</link>
+      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
-      <guid>https://bnbdr.github.io/tags/ha-ha/</guid>
+      <guid>https://bnbdr.github.io/tags/exploit/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Money</title>
-      <link>https://bnbdr.github.io/tags/money/</link>
-      <pubDate>Tue, 05 Jun 2018 15:50:05 +0300</pubDate>
+      <title>Vulnerability</title>
+      <link>https://bnbdr.github.io/tags/vulnerability/</link>
+      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
-      <guid>https://bnbdr.github.io/tags/money/</guid>
+      <guid>https://bnbdr.github.io/tags/vulnerability/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Nothing</title>
-      <link>https://bnbdr.github.io/tags/nothing/</link>
-      <pubDate>Tue, 05 Jun 2018 15:50:05 +0300</pubDate>
+      <title>Write Up</title>
+      <link>https://bnbdr.github.io/tags/write-up/</link>
+      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
-      <guid>https://bnbdr.github.io/tags/nothing/</guid>
+      <guid>https://bnbdr.github.io/tags/write-up/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Somethingelse</title>
-      <link>https://bnbdr.github.io/tags/somethingelse/</link>
-      <pubDate>Tue, 05 Jun 2018 15:25:39 +0300</pubDate>
+      <title>Yara</title>
+      <link>https://bnbdr.github.io/tags/yara/</link>
+      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
-      <guid>https://bnbdr.github.io/tags/somethingelse/</guid>
+      <guid>https://bnbdr.github.io/tags/yara/</guid>
       <description></description>
     </item>
     
