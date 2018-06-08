@@ -6,10 +6,20 @@
     <description>Recent content in Posts on :3</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 06 Jun 2018 15:43:53 +0300</lastBuildDate>
+    <lastBuildDate>Fri, 08 Jun 2018 12:38:55 +0300</lastBuildDate>
     
 	<atom:link href="https://bnbdr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Mobile-friendly random XKCD</title>
+      <link>https://bnbdr.github.io/posts/xkcd/</link>
+      <pubDate>Fri, 08 Jun 2018 12:38:55 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/posts/xkcd/</guid>
+      <description>The UI on https://xkcd.com was a tad annoying on mobile so I&amp;rsquo;d written this page that would load random comics as you scroll.
+All credit for the original comics goes to Randall Munroe.</description>
+    </item>
     
     <item>
       <title>SwissCheese - Exploiting The Pattern Matching Swiss Knife</title>
@@ -17,7 +27,7 @@
       <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
       <guid>https://bnbdr.github.io/posts/swisscheese/</guid>
-      <description>Cheese, Gromit In this short incredibly lengthy post I&amp;rsquo;ll talk about the binary format of YARA rules and also a bit about exploting two vulnerabilities I found in it.
+      <description>Cheese, Gromit In this short incredibly lengthy post I&amp;rsquo;ll talk about the binary format of YARA rules and also a bit about exploiting two vulnerabilities I found in it.
 I named this SwissCheese becuase I found it amusing that the &amp;ldquo;Pattern Matching Swiss Knife&amp;rdquo; had quite a few holes in it ;D
 If you want to skip straight to the exploitation part, go to WAT or take a look at the repo.</description>
     </item>

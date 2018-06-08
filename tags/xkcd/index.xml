@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xkcd on :3</title>
+    <link>https://bnbdr.github.io/tags/xkcd/</link>
+    <description>Recent content in Xkcd on :3</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Fri, 08 Jun 2018 12:38:55 +0300</lastBuildDate>
+    
+	<atom:link href="https://bnbdr.github.io/tags/xkcd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mobile-friendly random XKCD</title>
+      <link>https://bnbdr.github.io/posts/xkcd/</link>
+      <pubDate>Fri, 08 Jun 2018 12:38:55 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/posts/xkcd/</guid>
+      <description>The UI on https://xkcd.com was a tad annoying on mobile so I&amp;rsquo;d written this page that would load random comics as you scroll.
+All credit for the original comics goes to Randall Munroe.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            overflow-y: scroll;
+        }
+
+        html,
+        h2,
+        h3,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a:link,
+        a:visited {
+            color: #d44336;
+            text-decoration: none;
+        }
+
+        .header {
+            background-color: #333;
+            color: #ddd;
+            margin: 0;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h3 {
+            padding: 20px;
+            margin: 0;
+        }
+
+        .header a:link,
+        a:visited {
+            background-color: #d44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+
+        .post {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .post h3 {
+            padding: 20px;
+            margin: 0;
+        }  
+        .post h6 {
+            padding: 80px;
+            padding-bottom: 20px;
+            padding-top: 0px;
+            margin: 0;
+        }
+
+        .post:nth-child(2n+1) {
+            background-color: #333;
+            color: #ddd;
+        }
+
+        .post img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .post div.timestamp {
+            padding: 20px;
+        }
+
+        @media only screen and (max-width: 1000px) and (orientation: portrait) {
+            .header {
+                font-size: 1.7em;
+                padding: 60px;
+            }
+            .post img {
+                width: 94%;
+            }
+            .post {
+                padding-bottom: 50px;
+                padding-top: 50px;
+            }
+            .post h3 {
+                display: none;
+            }
+            .post h6 {
+                display: none;
+            }
+            .post .timestamp {
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
+
+</head>
+
+<body>
+    <div id='main'>
+    </div>
+
+    <script>
+        var base_url = 'https://dynamic.xkcd.com/api-0/jsonp/comic/';
+        var latest = 0;
+        var shown_posts = [];
+        var downloading = false;
+        var tpl = _.template("<div class='post'><h3><%= title %></h3><h6><%= alt %></h6><a href='//www.xkcd.com/<%= num %>/' ><img alt=<%= alt %> src=<%= img %>></a><div class='timestamp'>( <%= year %>-<%= month %>-<%= day %> )</div></div>");
+
+        $("<div class='header'><h2>All credit goes to <a href='//www.xkcd.com/'>xkcd</a></h2></div>").appendTo($('#main'));
+
+        function add_post(j) {
+            shown_posts.push(j.num);
+            $(tpl(j)).appendTo($('#main'));
+        }
+
+        function get_random() {
+            var res = 0;
+            while (res == 0 || shown_posts.indexOf(res) != -1) {
+                res = Math.floor(Math.random() * (latest - 1 + 1)) + 1;
+            }
+
+            shown_posts.push(res);
+            return res;
+        }
+
+        function download_random_post() {
+            var rand_num = get_random();
+            $.ajax({
+                url: base_url + rand_num,
+                dataType: 'jsonp',
+                success: function (j) {
+                    add_post(j);
+                    downloading = false;
+                }, error: function (e) {
+                    downloading = false;
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $.ajax({
+                url: base_url,
+                dataType: 'jsonp',
+                success: function (j_first) {
+                    latest = j_first.num;
+                    add_post(j_first);
+                    download_random_post()
+                    download_random_post()
+                    download_random_post()
+                    download_random_post()
+                    download_random_post()
+                    download_random_post()
+
+                    var win = $(window);
+                    win.scroll(function () {
+
+                        if (($(document).height() - $(window).height()) - $(window).scrollTop() < 600) {
+                            downloading = true;
+                            download_random_post();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
