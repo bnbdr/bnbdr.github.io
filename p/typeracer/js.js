@@ -16,7 +16,7 @@ window.chartColors = {
 // end of chart consts
 
 function build_typeracer_url(username, n = 1) {
-	return "http://typeracerdata-hrd.appspot.com/games?n=" + n + "&universe=play&playerId=tr:" + encodeURI(username)
+	return "//typeracerdata-hrd.appspot.com/games?n=" + n + "&universe=play&playerId=tr:" + encodeURI(username)
 }
 
 function get_race_data(url, jsonp = true) {
