@@ -1,0 +1,454 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<style>
+		* {
+			maring: 0;
+			padding: 0;
+		}
+
+		body,
+		html {
+			max-width: 100%;
+			width: 100%;
+		}
+
+		body {
+			margin: 0 auto;
+		}
+
+		#charts_container {
+
+			margin: 0 auto;
+			padding-top: 30px;
+			padding-bottom: 30px;
+			width: 100%;
+		}
+
+		#downloadlink {
+			text-decoration: none;
+		}
+
+		@media only screen and (max-width: 600px) {}
+
+		@media only screen and (min-width: 700px) {}
+
+		@media only screen and (min-width: 1000px) {}
+
+		@media only screen and (min-width: 1300px) {}
+
+		.canvas-holder {
+			width: 80%;
+			max-width: 600px;
+			margin: 0 auto;
+			margin-bottom: 50px;
+		}
+
+		canvas {
+			width: 100% !important;
+			max-width: 800px;
+			height: auto !important;
+		}
+
+
+
+
+		.loader {
+
+			margin: 0 auto;
+			margin-top: 30px;
+			width: 3em;
+			height: 3em;
+			animation: loaderAnim 1.25s infinite ease-in-out;
+			outline: 1px solid transparent;
+		}
+
+		.loader #largeBox {
+			height: 3em;
+			width: 3em;
+			background-color: #34495e;
+			outline: 1px solid transparent;
+			position: fixed;
+		}
+
+		.loader #smallBox {
+			height: 3em;
+			width: 3em;
+			background-color: white;
+			position: fixed;
+			z-index: 1;
+			outline: 1px solid transparent;
+			animation: smallBoxAnim 1.25s alternate infinite ease-in-out;
+		}
+
+		@keyframes smallBoxAnim {
+			0% {
+				transform: scale(0.2);
+			}
+			100% {
+				transform: scale(0.75);
+			}
+		}
+
+		@keyframes loaderAnim {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(90deg);
+			}
+		}
+
+		.loaderwrapper {
+
+			width: 100%;
+			margin: 0 auto;
+			visibility: hidden;
+			display: box;
+		}
+
+
+		/* Add a black background color to the top navigation bar */
+
+		.topnav {
+			overflow: hidden;
+			background-color: #f0f0f0;
+		}
+
+		#error_msg {
+			width: 100%;
+			text-align: center;
+			background-color: #333;
+			color: #e66;
+			font-size: 12px;
+			font-family: monospace;
+		}
+
+		/* Style the links inside the navigation bar */
+
+		.topnav div {
+			float: left;
+			display: block;
+			color: black;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+		}
+
+		/* Change the color of links on hover */
+
+		/* Style the "active" element to highlight the current page */
+
+		.topnav div.active {
+			cursor: pointer;
+			background-color: #2196F3;
+			color: white;
+			float: right;
+		}
+
+		.topnav div.title {
+
+			font-family: monospace;
+			color: #333;
+		}
+
+		/* Style the search box inside the navigation bar */
+
+		.topnav input[type=text] {
+			float: left;
+			padding: 6px;
+			border: none;
+			color: #999;
+			margin: 8px;
+			font-size: 17px;
+		}
+
+		#racernametitle {
+			font-size: 28px;
+			color: #aaa;
+			height: 24px;
+			font-family: monospace;
+			margin-top: 0;
+			paddint-bottom: 30px;
+			text-align: center;
+
+		}
+
+		#downloadbtn {
+			text-align: center;
+			background-color: #333;
+			color: #f0f0f0;
+			font-size: 15px;
+			padding: 15px;
+			min-width: 120px;
+			margin-bottom: 30px;
+			border-radius: 7px;
+			cursor: pointer;
+
+			transition: background-color 100ms linear;
+		}
+
+		#downloadbtn:hover {
+			background-color: #555
+		}
+
+		#downloadwarpper {
+			visibility: hidden;
+			width: 20%;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+
+<body>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous"></script>
+
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js></script>
+	<script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js></script>
+	<script src=https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels></script>
+	<script src=js.js></script>
+
+	<div class="topnav">
+		<div class="title">TypeRacer Statistics</div>
+
+		<input id=racername type="text" placeholder="racer name">
+		<div id='fetch' class="active">fetch</div>
+	</div>
+	<div id=error_msg class="topnav">
+
+	</div>
+	<div class="loaderwrapper">
+		<div class="loader">
+			<div id="largeBox"></div>
+			<div id="smallBox"></div>
+		</div>
+	</div>
+
+
+	<div id=charts_container>
+		<h3 id=racernametitle></h3>
+		<div id=piecontainer class="canvas-holder">
+			<canvas id="piechart"></canvas>
+		</div>
+		<div id=hrlycountcontainer class="canvas-holder">
+			<canvas id="hrlycount"></canvas>
+		</div>
+		<div id=hrlycontainer class="canvas-holder">
+			<canvas id="hrly"></canvas>
+		</div>
+		<div id=linecontainer class="canvas-holder">
+			<canvas id="line"></canvas>
+		</div>
+		<div id=acccontainer class="canvas-holder">
+			<canvas id="acc"></canvas>
+		</div>
+
+	</div>
+	<div id=downloadwarpper>
+
+		<a id=downloadlink href='#'>
+			<div id=downloadbtn>Download data</div>
+		</a>
+	</div>
+	<script>
+		function start_load_animation() {
+			// $('.loader, .loader #smallBox').css("animation", "none");
+			$('.loaderwrapper').css('visibility', 'visible');
+
+		}
+		function stop_load_animation() {
+			// $('.loader, .loader #smallBox').css("animation", "none");
+			$('.loaderwrapper').css('visibility', 'hidden');
+
+		}
+
+		curmsg = 0;
+		isclicked = false;
+		function show_error(msg, time = 3000) {
+			console.error(msg);
+			if (curmsg) { console.warn('already has error, new: ' + msg); return; }
+
+			$('#error_msg').text(msg);
+			//$('#error_msg').css('padding-top', '10px');
+			$('#error_msg').animate({ "padding-top": "+=10px", "padding-bottom": "+=10px" }, "fast")
+			curmsg = setTimeout(function () {
+				$('#error_msg').text('');
+
+				$('#error_msg').animate({ "padding-top": "0px", "padding-bottom": "0px" }, "fast")
+				curmsg = 0;
+			}, time);
+		}
+
+		function clear_current_stats() {
+			$('#racernametitle').text('');
+
+			$('#piechart').remove();
+			$('#piecontainer').append('<canvas id="piechart"></canvas>');
+
+			$('#line').remove();
+			$('#linecontainer').append('<canvas id="line"></canvas>');
+
+			$('#acc').remove();
+			$('#acccontainer').append('<canvas id="acc"></canvas>');
+
+			$('#hrly').remove();
+			$('#hrlycontainer').append('<canvas id="hrly"></canvas>');
+
+			$('#hrlycount').remove();
+			$('#hrlycountcontainer').append('<canvas id="hrlycount"></canvas>');
+
+			$('#downloadwarpper').css('visibility', 'hidden');
+
+		}
+		function main(racername, isJsonp = true) {
+
+			// var racername = 'bad32';
+			clear_current_stats();
+			start_load_animation();
+			get_race_data(build_typeracer_url(racername), isJsonp).done(function (d1) {
+				if (d1.error) {
+					stop_load_animation();
+					console.error(d1);
+					raw_data_for_download = 0
+					var msg = '';
+
+					if (d1.error == 404) {
+						msg = 'Racer not found';
+					}
+					else {
+						msg = 'unknown error: ' + d1.error;
+					}
+					show_error(msg);
+					isclicked = false;
+
+				}
+				else {
+
+					console.dir(d1);
+					var max_allowed = 5000; // very slow
+					var max_races_to_get = Math.min(max_allowed, d1[0].gn);
+					if (max_races_to_get == max_allowed) {
+						show_error('race data is capped at ' + max_allowed + ' races; wait patiently', 15000);
+						console.log('capping races at ' + max_allowed);
+					} else if (max_races_to_get > 400) {
+						show_error('fetching ' + max_races_to_get + ' races, wait a sec', 10000);
+					}
+
+					var url = build_typeracer_url(racername, max_races_to_get);
+
+					get_race_data(url, isJsonp).done(function (d) {
+						stop_load_animation();
+						isclicked = false;
+
+						if (d.error) {
+							raw_data_for_download = 0;
+							console.error(d);
+							show_error('failed racer data');
+
+						} else {
+							console.log(racername);
+							$('#racernametitle').text(racername);
+
+
+							pie_data = build_pie_data(d);
+							show_place_pie_chart(pie_data, "piechart");
+							setTimeout(function () {
+								hrly_data = build_hourly(d);
+								show_hourly_avg_count(hrly_data, 'hrlycount');
+								console.dir(hrly_data);
+								show_hourly_avg(hrly_data, "hrly");
+							}, 1000);
+
+							spdtime_data = build_speed_time(d);
+
+							setTimeout(function () {
+								show_score_date_line(spdtime_data, "line");
+							}, 1500);
+
+							setTimeout(function () {
+								show_acc_date_line(spdtime_data, "acc");
+							}, 1600);
+							$('#downloadwarpper').css('visibility', 'visible');
+
+							// generate link for download
+							var json = JSON.stringify(d);
+							var blob = new Blob([json], { type: 'text/json' });
+							var url = URL.createObjectURL(blob);
+
+							$('#downloadlink').attr("download", racername + '.json');
+							$('#downloadlink').attr("href", url);
+						}
+
+
+
+					});
+				}
+			});
+
+		}
+		function onclick_action(racername) {
+
+			var racername = $('#racername').val()
+
+			if (racername) {
+
+				console.log('fetching for ' + racername);
+				if (!isclicked) {
+					window.location.hash = racername;
+					isclicked = true;
+					main(racername);
+				} else {
+					console.warn('already showing');
+					show_error('already fetching data');
+				}
+			}
+			else {
+				console.warn('no racername');
+			}
+		}
+
+		function downloadTextFile(text, name) {
+			const a = document.createElement('a');
+			a.href = URL.createObjectURL(new Blob([text], { type: `text/${name.split(".").pop()}` }));
+			a.download = name;
+			a.click();
+		}
+
+		$(document).ready(function () {
+
+
+			$("#racername").keyup(function (e) {
+				var code = e.which;
+				if (code == 13) e.preventDefault();
+				if (code == 32 || code == 13 || code == 188 || code == 186) {
+					onclick_action();
+				}
+			});
+			window.setTimeout(function () {
+				document.getElementById('racername').focus();
+			}, 100);
+
+			$("#fetch").click(function () {
+
+				onclick_action()
+
+				return false;
+			});
+			var urlracername = window.location.hash.substr(1);
+			if (urlracername) {
+				console.log('got racer name in url: ' + urlracername);
+				var racername = $('#racername').val(urlracername)
+				onclick_action(urlracername);
+
+			}
+		});
+
+
+	</script>
+
+</body>
+
+</html>

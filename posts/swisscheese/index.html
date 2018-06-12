@@ -129,7 +129,8 @@
 
 <p>I named this <code>SwissCheese</code> becuase I found it amusing that the &ldquo;Pattern Matching Swiss <em>Knife</em>&rdquo; had quite a few holes in it ;D</p>
 
-<p>If you want to skip straight to the exploitation part, go to <a href="#wat">WAT</a> or take a look at the <a href="//github.com/bnbdr/swisscheese">repo</a>.</p>
+<p>The two issues were assigned the CVE-IDs <code>CVE-2018-12034</code> and <code>CVE-2018-12035</code> and affect <a href="//github.com/VirusTotal/yara/tree/v3.7.1">YARA 3.7.1</a> and earlier.
+If you want to skip straight to the exploitation part, go to <a href="#wat">WAT</a> or take a look at the <a href="//github.com/bnbdr/swisscheese">repo</a>.</p>
 
 <h3 id="precompiling-yara-rules">Precompiling YARA rules</h3>
 
@@ -308,7 +309,7 @@ Well, you&rsquo;re right.</p>
 
 <h3 id="yara-s-virtual-machine">YARA&rsquo;s virtual machine</h3>
 
-<p>This is a stack based VM with a scratch memory of 128 values.
+<p>This is a <a href="https://en.wikipedia.org/wiki/Bytecode">stack based VM</a> with a scratch memory of 128 values.
 In addition to bitwise, logical and arithmic operations there are several opcodes<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">6</a></sup> specifically for the vm-stack, as well as the scratch memory.</p>
 
 <p>The VM works with the <code>YR_VALUE</code> union. This way it grabs the appropriate type according to the opcode:</p>
@@ -472,7 +473,7 @@ FILE_HASH
 
 <p>After all this I got a valid rule file that&rsquo;s only <strong>~3KB</strong> in size.</p>
 
-<h3 id="the-greate-escape">The greate escape</h3>
+<h3 id="the-great-escape">The great escape</h3>
 
 <p>Finally I can start working on exploiting the vulnerabilities. There are a few small caveats to keep in mind:</p>
 
@@ -572,21 +573,20 @@ Some of these required changing values in the <code>yarasm</code> file.</p>
 
 <h2 id="attack-vector">Attack vector</h2>
 
-<p>Any victim or service that allows running a user-supplied rule file without validating that it isn&rsquo;t a binary rule.
-This should work regardless of the target file scanned<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">7</a></sup>.</p>
+<p>Any victim or service that allows running a user-supplied rule file without validating that it isn&rsquo;t in binary format.</p>
+
+<p>Validation is left to the user since, as of this writing, YARA does <em>not</em> distinguish between the two input formats and blindly accepts both<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">7</a></sup>.</p>
+
+<p>This should work regardless of the target file scanned<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">8</a></sup>.</p>
 
 <h2 id="mitigations">Mitigations?</h2>
 
 <ul>
 <li>checking every access to scratch memory</li>
 <li>require an explicit flag to load and run a compiled rule</li>
-<li>check every relocated address is within the loaded file</li>
+<li>check that every relocated <code>fointer</code> does not point outside the buffer</li>
 <li>make the loaded file read-only</li>
 </ul>
-
-<h2 id="cve-s">CVE&rsquo;s</h2>
-
-<p>The two issues were assigned the CVE-IDs <code>CVE-2018-12034</code> and <code>CVE-2018-12035</code>, respectively.</p>
 
 <h2 id="notes">Notes</h2>
 
@@ -601,19 +601,21 @@ This should work regardless of the target file scanned<sup class="footnote-ref" 
 
 <ol>
 <li id="fn:1">read about <a href="https://yara.readthedocs.io/en/v3.7.1/commandline.html">YARA&rsquo;s command line options</a>
- <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:1">↑</a></li>
 <li id="fn:3"><a href="//github.com/VirusTotal/yara/blob/v3.7.1/libyara/hash.c">YARA&rsquo;s C implementation</a>, <a href="//github.com/bnbdr/swisscheese/blob/master/yara_hash.py">my python port</a>
- <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:3">↑</a></li>
 <li id="fn:6"><a href="//github.com/bnbdr/swisscheese/blob/master/yara.bt">my incomplete template</a>
- <a class="footnote-return" href="#fnref:6"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:6">↑</a></li>
 <li id="fn:2"><a href="https://www.sweetscape.com/010editor/">010editor</a>
- <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:2">↑</a></li>
 <li id="fn:4">read about <a href="https://yara.readthedocs.io/en/v3.7.1/writingrules.html#external-variables">externals in YARA</a>
- <a class="footnote-return" href="#fnref:4"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:4">↑</a></li>
 <li id="fn:5"><a href="//github.com/VirusTotal/yara/blob/v3.7.1/libyara/include/yara/exec.h">YARA VM opcodes</a>
- <a class="footnote-return" href="#fnref:5"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:5">↑</a></li>
+<li id="fn:8">The only difference between the two use cases is <code>When invoking YARA with compiled rules a single file is accepted</code>. see <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>
+ <a class="footnote-return" href="#fnref:8">↑</a></li>
 <li id="fn:7">PoC worked on <code>Windows 10</code> when running against an executable or PID, it kinda works against a target directory
- <a class="footnote-return" href="#fnref:7"><sup>[return]</sup></a></li>
+ <a class="footnote-return" href="#fnref:7">↑</a></li>
 </ol>
 </div>
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scraping on :3</title>
+    <link>https://bnbdr.github.io/tags/scraping/</link>
+    <description>Recent content in Scraping on :3</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 12 Jun 2018 15:14:20 +0300</lastBuildDate>
+    
+	<atom:link href="https://bnbdr.github.io/tags/scraping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typeracer Can Be Addictive</title>
+      <link>https://bnbdr.github.io/posts/typeracer-stats/</link>
+      <pubDate>Tue, 12 Jun 2018 15:14:20 +0300</pubDate>
+      
+      <guid>https://bnbdr.github.io/posts/typeracer-stats/</guid>
+      <description>For the uninitiated, typeracer.com is a website that allows you to test your typing speeds against other people using segments of text from different sources.
+Judging by the relatively copious number of races I&amp;rsquo;v partaken in - I probably liked it: Who&amp;rsquo;s my opponent? A big factor in typeracer is your average WPM1. I came to the realization that my most challenging opponent was myself - I had to beat my own average score every race so I won&amp;rsquo;t lower it.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,3 +1,16 @@
+/* footnote link*/
+a[href^="#fn:"],
+/* Back to footnote link*/
+a[href^="#fnref:"] {
+  text-decoration: none;
+
+  font-family: monospace;
+}
+a[href^="#fn:"]:before{ content: '[' }
+a[href^="#fn:"]:after{ content: ']' }
+sup {
+  position: relative; top: -0.5em; font-size: 80%; 
+}
 .dark {
   color: #333 !important;
 }
