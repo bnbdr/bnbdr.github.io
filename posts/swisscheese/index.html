@@ -129,12 +129,13 @@
 
 <p>I named this <code>SwissCheese</code> becuase I found it amusing that the &ldquo;Pattern Matching Swiss <em>Knife</em>&rdquo; had quite a few holes in it ;D</p>
 
-<p>The two issues were assigned the CVE-IDs <code>CVE-2018-12034</code> and <code>CVE-2018-12035</code> and affect <a href="//github.com/VirusTotal/yara/tree/v3.7.1">YARA 3.7.1</a> and earlier.
-If you want to skip straight to the exploitation part, go to <a href="#wat">WAT</a> or take a look at the <a href="//github.com/bnbdr/swisscheese">repo</a>.</p>
+<p>The two issues were assigned the CVE-IDs <a href="//cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12034">CVE-2018-12034</a> and <a href="//cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12035">CVE-2018-12035</a>. They affect <a href="//github.com/VirusTotal/yara/tree/v3.7.1">YARA 3.7.1</a> and earlier<sup class="footnote-ref" id="fnref:9"><a href="#fn:9">1</a></sup>.</p>
+
+<p>If you want to skip straight to the exploitation part, go to <a href="#wat">WAT</a> or take a look at the <a href="//github.com/bnbdr/swisscheese">repo</a>.</p>
 
 <h3 id="precompiling-yara-rules">Precompiling YARA rules</h3>
 
-<p>Most people who use it know that YARA accepts rule(s) and a target, and also that you can precompile<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> your rule if you care about &ldquo;performance&rdquo;. I was a bit curious about the precompiled part. How is my rule represented in its binary form? I took the simplest of rules:</p>
+<p>Most people who use it know that YARA accepts rule(s) and a target, and also that you can precompile<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">2</a></sup> your rule if you care about &ldquo;performance&rdquo;. I was a bit curious about the precompiled part. How is my rule represented in its binary form? I took the simplest of rules:</p>
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-ruby" data-lang="ruby"><span></span><span style="color: #f8f8f2">rule</span> <span style="color: #f8f8f2">empty</span> <span style="color: #f8f8f2">{</span>
     <span style="color: #e6db74">condition</span><span style="color: #f8f8f2">:</span> <span style="color: #66d9ef">true</span>
 <span style="color: #f8f8f2">}</span>
@@ -184,7 +185,7 @@ That&rsquo;s where &lsquo;magic&rsquo; strings come into play. They often act li
 
 <h3 id="hash-whiplash">Hash whiplash</h3>
 
-<p>The hash isn&rsquo;t very interesting<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">2</a></sup>. Yara first hashes the file header, then uses it as a seed to the hashing of the body. Note that the hashing is performed before the patching, because the &lsquo;compiler&rsquo; obviously can&rsquo;t predict the allocated address used for the file.</p>
+<p>The hash isn&rsquo;t very interesting<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup>. Yara first hashes the file header, then uses it as a seed to the hashing of the body. Note that the hashing is performed before the patching, because the &lsquo;compiler&rsquo; obviously can&rsquo;t predict the allocated address used for the file.</p>
 
 <h3 id="i-m-ready-for-you">I&rsquo;m ready for you</h3>
 
@@ -227,7 +228,7 @@ It starts with a rule header, alligned to 8; I suppose it&rsquo;s so the same pr
 <span style="color: #f8f8f2">}</span> <span style="color: #f8f8f2">YR_RULE;</span>
 </code></pre></div>
 
-<p>You should hastily recognize some <code>fointers</code> in the above struct as optional parts in a rule: <code>identifier</code>, <code>tags</code>, <code>metas</code>,<code>strings</code>, <code>namespace</code>. At this point I noticed the pattern and started copying all the relevant structs to my template<sup class="footnote-ref" id="fnref:6"><a href="#fn:6">3</a></sup>. Every <code>fointer</code> that isn&rsquo;t equal to <code>0xFFFABADA</code> means seeking to that position and parsing the struct there, ad infinitum.</p>
+<p>You should hastily recognize some <code>fointers</code> in the above struct as optional parts in a rule: <code>identifier</code>, <code>tags</code>, <code>metas</code>,<code>strings</code>, <code>namespace</code>. At this point I noticed the pattern and started copying all the relevant structs to my template<sup class="footnote-ref" id="fnref:6"><a href="#fn:6">4</a></sup>. Every <code>fointer</code> that isn&rsquo;t equal to <code>0xFFFABADA</code> means seeking to that position and parsing the struct there, ad infinitum.</p>
 
 <p>In the case of our empy rule,  which had no <code>tags</code>, <code>metas</code> or <code>strings</code>, only the <code>identifier</code> and <code>ns</code> members are of interest.</p>
 
@@ -266,7 +267,7 @@ It starts with a rule header, alligned to 8; I suppose it&rsquo;s so the same pr
 
 <h3 id="all-about-alignment">All about alignment</h3>
 
-<p>I&rsquo;m sure you&rsquo;ve been following along using your favorite hex-editor<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">4</a></sup> and already know - all the <code>QWORD</code> members (and structs which contain them) should be aligned to an 8-byte boundry seeing that the file is practically a memory map.
+<p>I&rsquo;m sure you&rsquo;ve been following along using your favorite hex-editor<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">5</a></sup> and already know - all the <code>QWORD</code> members (and structs which contain them) should be aligned to an 8-byte boundry seeing that the file is practically a memory map.
 Well, you&rsquo;re right.</p>
 
 <p><code>DWORD</code>s filled with <code>0xCC</code> are a good sign for padding in this case. Do note that the file header is 12 bytes long, which means it messes up the alignment when viewed in a hex-editor.</p>
@@ -279,7 +280,7 @@ Well, you&rsquo;re right.</p>
   <span style="color: #f8f8f2">null_external.type</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">EXTERNAL_VARIABLE_TYPE_NULL;</span>
 </code></pre></div>
 
-<p>Since I didn&rsquo;t specify any externals<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">5</a></sup>, the <code>externals_list_head</code> in the rule header should point to the &lsquo;null external&rsquo;, and be done with it. Keep in mind that unlike the &lsquo;null rule&rsquo;, this is marked by the <code>EXTERNAL_VARIABLE_TYPE_NULL</code> value, which equals 0.</p>
+<p>Since I didn&rsquo;t specify any externals<sup class="footnote-ref" id="fnref:4"><a href="#fn:4">6</a></sup>, the <code>externals_list_head</code> in the rule header should point to the &lsquo;null external&rsquo;, and be done with it. Keep in mind that unlike the &lsquo;null rule&rsquo;, this is marked by the <code>EXTERNAL_VARIABLE_TYPE_NULL</code> value, which equals 0.</p>
 
 <h3 id="ready-set-code">Ready, set, code</h3>
 
@@ -310,7 +311,7 @@ Well, you&rsquo;re right.</p>
 <h3 id="yara-s-virtual-machine">YARA&rsquo;s virtual machine</h3>
 
 <p>This is a <a href="https://en.wikipedia.org/wiki/Bytecode">stack based VM</a> with a scratch memory of 128 values.
-In addition to bitwise, logical and arithmic operations there are several opcodes<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">6</a></sup> specifically for the vm-stack, as well as the scratch memory.</p>
+In addition to bitwise, logical and arithmic operations there are several opcodes<sup class="footnote-ref" id="fnref:5"><a href="#fn:5">7</a></sup> specifically for the vm-stack, as well as the scratch memory.</p>
 
 <p>The VM works with the <code>YR_VALUE</code> union. This way it grabs the appropriate type according to the opcode:</p>
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><code class="language-C" data-lang="C"><span></span><span style="color: #66d9ef">typedef</span> <span style="color: #66d9ef">union</span> <span style="color: #f8f8f2">_YR_VALUE</span>
@@ -575,9 +576,9 @@ Some of these required changing values in the <code>yarasm</code> file.</p>
 
 <p>Any victim or service that allows running a user-supplied rule file without validating that it isn&rsquo;t in binary format.</p>
 
-<p>Validation is left to the user since, as of this writing, YARA does <em>not</em> distinguish between the two input formats and blindly accepts both<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">7</a></sup>.</p>
+<p>Validation is left to the user since, as of this writing, YARA does <em>not</em> distinguish between the two input formats and blindly accepts both<sup class="footnote-ref" id="fnref:8"><a href="#fn:8">8</a></sup>.</p>
 
-<p>This should work regardless of the target file scanned<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">8</a></sup>.</p>
+<p>This should work regardless of the target file scanned<sup class="footnote-ref" id="fnref:7"><a href="#fn:7">9</a></sup>.</p>
 
 <h2 id="mitigations">Mitigations?</h2>
 
@@ -600,6 +601,8 @@ Some of these required changing values in the <code>yarasm</code> file.</p>
 <hr />
 
 <ol>
+<li id="fn:9">Follow the issue on <a href="//github.com/VirusTotal/yara/issues/891">github</a>
+ <a class="footnote-return" href="#fnref:9">↑</a></li>
 <li id="fn:1">read about <a href="https://yara.readthedocs.io/en/v3.7.1/commandline.html">YARA&rsquo;s command line options</a>
  <a class="footnote-return" href="#fnref:1">↑</a></li>
 <li id="fn:3"><a href="//github.com/VirusTotal/yara/blob/v3.7.1/libyara/hash.c">YARA&rsquo;s C implementation</a>, <a href="//github.com/bnbdr/swisscheese/blob/master/yara_hash.py">my python port</a>
@@ -612,7 +615,7 @@ Some of these required changing values in the <code>yarasm</code> file.</p>
  <a class="footnote-return" href="#fnref:4">↑</a></li>
 <li id="fn:5"><a href="//github.com/VirusTotal/yara/blob/v3.7.1/libyara/include/yara/exec.h">YARA VM opcodes</a>
  <a class="footnote-return" href="#fnref:5">↑</a></li>
-<li id="fn:8">The only difference between the two use cases is <code>When invoking YARA with compiled rules a single file is accepted</code>. see <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>
+<li id="fn:8">The only difference between the two use cases is <code>When invoking YARA with compiled rules a single file is accepted</code>. see <sup class="footnote-ref" id="fnref:1"><a href="#fn:1">2</a></sup>
  <a class="footnote-return" href="#fnref:8">↑</a></li>
 <li id="fn:7">PoC worked on <code>Windows 10</code> when running against an executable or PID, it kinda works against a target directory
  <a class="footnote-return" href="#fnref:7">↑</a></li>
