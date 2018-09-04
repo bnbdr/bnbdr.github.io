@@ -752,6 +752,11 @@ section.main .content .markdown tbody tr:nth-child(odd) th {
   background-color: #f7f7f7;
 }
 
+.inpost-date{
+  color: #777;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
 #tags-single{
   color: #f7f7f7;
   margin-bottom: 48px;
@@ -778,4 +783,33 @@ section.main .content .markdown tbody tr:nth-child(odd) th {
   text-decoration: none;
   background-color:#965454;
   
+}
+/* override for mobile? */
+@media only screen and (max-width: 600px) {
+  section.main .container .content .inpost-date,
+  section.main .container .content .page-heading{  
+    text-align:center;
+  }
+
+  #tags-single
+  {
+    text-align:center;
+  }
+  section.main .container .content .post-item{
+  list-style: none;
+  }
+    section.main .container .content .post-item a{
+    display:block;
+    
+      /* padding-bottom:30px; */
+      padding:20px;
+      border-style: dashed; 
+      border-color: #888;
+     border-width: 1.5px; 
+     border-radius: 5px;
+      margin-bottom:10px;
+      /* background-color: #888; */
+  }
+ 
+
 }
