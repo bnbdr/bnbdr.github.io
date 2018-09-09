@@ -6,23 +6,33 @@
     <description>Recent content in Posts on :3</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 12 Jun 2018 15:14:20 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 09 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://bnbdr.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Typeracer Can Be Addictive</title>
+      <title>Making Explorer.exe Great Again</title>
+      <link>https://bnbdr.github.io/posts/mega/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bnbdr.github.io/posts/mega/</guid>
+      <description>The horrid amalgamation of code known as Windows Vista wasn&amp;rsquo;t all bad. As a result of the many effected changes, users were given the ability to run an executable by typing its name in the navigation bar of explorer.exe&amp;rsquo;s window1. By doing so the newly created process had its working directory set to the one shown in that window.
+Sadly, even this one redeeming feature has an unfortunate side effect: subsequent attempts to select the path of the directory from the nav bar will yeild something else - the absolute path of the executable that was run.</description>
+    </item>
+    
+    <item>
+      <title>The Addictiveness of Typeracer</title>
       <link>https://bnbdr.github.io/posts/typeracer-stats/</link>
       <pubDate>Tue, 12 Jun 2018 15:14:20 +0300</pubDate>
       
       <guid>https://bnbdr.github.io/posts/typeracer-stats/</guid>
       <description>For the uninitiated, typeracer.com is a website that allows you to test your typing speeds against other people using segments of text from different sources.
-Judging by the relatively copious number of races I&amp;rsquo;v partaken in - I probably liked it: Who&amp;rsquo;s my opponent? A big factor in typeracer is your average WPM1. I came to the realization that my most challenging opponent was myself - I had to beat my own average score every race so I won&amp;rsquo;t lower it.</description>
+Judging by the relatively copious number of races I&amp;rsquo;ve partaken in - I probably liked it: Who&amp;rsquo;s my opponent? A big factor in typeracer is your average WPM1. I came to the realization that my most challenging opponent was myself - I had to beat my own average score every race so I won&amp;rsquo;t lower it.</description>
     </item>
     
     <item>
-      <title>Mobile-friendly random XKCD</title>
+      <title>Random XKCD Feed</title>
       <link>https://bnbdr.github.io/posts/xkcd/</link>
       <pubDate>Fri, 08 Jun 2018 12:38:55 +0300</pubDate>
       
@@ -32,15 +42,15 @@ All credit for the original comics goes to Randall Munroe.</description>
     </item>
     
     <item>
-      <title>SwissCheese - Exploiting The Pattern Matching Swiss Knife</title>
+      <title>Exploiting The Pattern Matching Swiss Knife</title>
       <link>https://bnbdr.github.io/posts/swisscheese/</link>
       <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
       <guid>https://bnbdr.github.io/posts/swisscheese/</guid>
       <description>Cheese, Gromit In this short incredibly lengthy post I&amp;rsquo;ll talk about the binary format of YARA rules and also a bit about exploiting two vulnerabilities I found in it.
-I named this SwissCheese becuase I found it amusing that the &amp;ldquo;Pattern Matching Swiss Knife&amp;rdquo; had quite a few holes in it ;D
 The two issues were assigned the CVE-IDs CVE-2018-12034 and CVE-2018-12035. They affect YARA 3.7.1 and earlier1.
-If you want to skip straight to the exploitation part, go to WAT or take a look at the repo.</description>
+If you want to skip straight to the exploitation part, go to WAT or take a look at the repo.
+I named this SwissCheese becuase I found it amusing that the &amp;ldquo;Pattern Matching Swiss Knife&amp;rdquo; had quite a few holes in it ;D</description>
     </item>
     
   </channel>

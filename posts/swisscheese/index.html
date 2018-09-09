@@ -21,7 +21,7 @@
                 <meta property="og:image" content="https://bnbdr.github.io/posts/swisscheese/previcon.png" />
             
         
-        <meta property="og:title" content="SwissCheese - Exploiting The Pattern Matching Swiss Knife" />
+        <meta property="og:title" content="Exploiting The Pattern Matching Swiss Knife" />
         <meta property="og:url" content="https://bnbdr.github.io/posts/swisscheese/" />
         <meta property="og:description" content="A deep dive into YARA&#39;s binary rule file format with a dash of CVE" />
     
@@ -29,7 +29,7 @@
 <title>
 
 
-     SwissCheese - Exploiting The Pattern Matching Swiss Knife 
+     Exploiting The Pattern Matching Swiss Knife 
 
 </title>
 <link rel="canonical" href="https://bnbdr.github.io/posts/swisscheese/">
@@ -114,20 +114,17 @@
         <div class="content">
             <div class="page-heading">
 
-    SwissCheese - Exploiting The Pattern Matching Swiss Knife
+    Exploiting The Pattern Matching Swiss Knife
 
 </div>
 
+            
             <div class="inpost-date">
                 Jun 6, 2018
                 
             </div>
             
 <ul id="tags-single">
-    
-    <li class='posttag'><a class='tag' href="https://bnbdr.github.io/tags/yara">#yara</a> </li>
-    
-    <li class='posttag'><a class='tag' href="https://bnbdr.github.io/tags/vulnerability">#vulnerability</a> </li>
     
     <li class='posttag'><a class='tag' href="https://bnbdr.github.io/tags/exploit">#exploit</a> </li>
     
@@ -145,11 +142,11 @@
 
 <p><img src="calc.gif" alt="" /></p>
 
-<p>I named this <code>SwissCheese</code> becuase I found it amusing that the &ldquo;Pattern Matching Swiss <em>Knife</em>&rdquo; had quite a few holes in it ;D</p>
-
 <p>The two issues were assigned the CVE-IDs <a href="//cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12034">CVE-2018-12034</a> and <a href="//cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12035">CVE-2018-12035</a>. They affect <a href="//github.com/VirusTotal/yara/tree/v3.7.1">YARA 3.7.1</a> and earlier<sup class="footnote-ref" id="fnref:9"><a href="#fn:9">1</a></sup>.</p>
 
 <p>If you want to skip straight to the exploitation part, go to <a href="#wat">WAT</a> or take a look at the <a href="//github.com/bnbdr/swisscheese">repo</a>.</p>
+
+<p>I named this <code>SwissCheese</code> becuase I found it amusing that the &ldquo;Pattern Matching Swiss <em>Knife</em>&rdquo; had quite a few holes in it ;D</p>
 
 <h3 id="precompiling-yara-rules">Precompiling YARA rules</h3>
 

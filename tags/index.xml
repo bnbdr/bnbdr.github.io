@@ -21,20 +21,20 @@
     </item>
     
     <item>
+      <title>Reversing</title>
+      <link>https://bnbdr.github.io/tags/reversing/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/reversing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Scraping</title>
       <link>https://bnbdr.github.io/tags/scraping/</link>
       <pubDate>Tue, 12 Jun 2018 15:14:20 +0300</pubDate>
       
       <guid>https://bnbdr.github.io/tags/scraping/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vulnerability</title>
-      <link>https://bnbdr.github.io/tags/vulnerability/</link>
-      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
-      
-      <guid>https://bnbdr.github.io/tags/vulnerability/</guid>
       <description></description>
     </item>
     
@@ -48,29 +48,20 @@
     </item>
     
     <item>
+      <title>Windows</title>
+      <link>https://bnbdr.github.io/tags/windows/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://bnbdr.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Write Up</title>
       <link>https://bnbdr.github.io/tags/write-up/</link>
       <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
       
       <guid>https://bnbdr.github.io/tags/write-up/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Xkcd</title>
-      <link>https://bnbdr.github.io/tags/xkcd/</link>
-      <pubDate>Fri, 08 Jun 2018 12:38:55 +0300</pubDate>
-      
-      <guid>https://bnbdr.github.io/tags/xkcd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Yara</title>
-      <link>https://bnbdr.github.io/tags/yara/</link>
-      <pubDate>Wed, 06 Jun 2018 15:43:53 +0300</pubDate>
-      
-      <guid>https://bnbdr.github.io/tags/yara/</guid>
       <description></description>
     </item>
     
