@@ -18,7 +18,7 @@
       
       <guid>https://bnbdr.github.io/posts/mega/</guid>
       <description>The horrid amalgamation of code known as Windows Vista wasn&amp;rsquo;t all bad. As a result of the many effected changes, users were given the ability to run an executable by typing its name in the navigation bar of explorer.exe&amp;rsquo;s window1. By doing so the newly created process had its working directory set to the one shown in that window.
-Sadly, even this one redeeming feature has an unfortunate side effect: subsequent attempts to select the path of the directory from the nav bar will yeild something else - the absolute path of the executable that was run.</description>
+Sadly, even this one redeeming feature has an unfortunate side effect: subsequent attempts to select the path of the directory from the nav bar will yield something else - the absolute path of the executable that was run.</description>
     </item>
     
     <item>
