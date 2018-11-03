@@ -168,13 +168,13 @@ section.main {
         -webkit-order: 2;
         -moz-order: 2;
         -ms-order: 2;
-        order: 2;
+        order: 1;
     }
     section.main {
         -webkit-order: 1;
         -moz-order: 1;
         -ms-order: 1;
-        order: 1;
+        order: 2;
     }
 }
 
@@ -264,7 +264,7 @@ section.header nav ul li:first-child {
 }
 
 section.header nav ul li:last-child {
-    margin-right: 0;
+    margin-right: 0px !important;
 }
 
 section.header nav ul a {
@@ -335,14 +335,15 @@ section.icons .content {
 }
 
 section.icons .content a {
-    margin-left: 6px;
-    margin-right: 6px;
+    /* margin-left: 6px;
+    margin-right: 6px; */
+    /*     
     opacity: 0.6;
     -webkit-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
     -moz-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
     -ms-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
     -o-transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
-    transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+    transition: opacity 0.1s cubic-bezier(0.47, 0, 0.75, 0.72); */
 }
 
 section.icons .content a:first-child {
@@ -354,12 +355,7 @@ section.icons .content a:last-child {
 }
 
 section.icons .content a:hover {
-    opacity: 0.8;
-}
-
-section.icons .content a .icon {
-    width: 32px;
-    height: 32px;
+    /* opacity: 0.8; */
 }
 
 section.icons .content a .flag {
@@ -609,11 +605,11 @@ section.main {
     }
     section.header {
         padding-top: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 32px;
     }
     section.icons {
-        padding-top: 60px;
-        padding-bottom: 60px;
+        /* padding-top: 60px; */
+        /* padding-bottom: 60px; */
     }
     section.main {
         padding-top: 0;
@@ -949,4 +945,39 @@ div.inpost-desc {
         margin-bottom: 10px;
         /* background-color: #888; */
     }
+}
+section.icons .content a div.backicon {
+    float: left;
+   
+    width: 24px;
+    height: 24px;
+    background-color: #666;
+    transition: background-color 0.1s cubic-bezier(0.47, 0, 0.75, 0.72);
+}
+
+#twittericon {
+    mask-image: url(/img/twitter.svg);
+    margin-left: 12px;
+    margin-right: 12px;
+    /* margin-right: 6px; */
+    /* margin-right: 12px; */
+    
+}
+
+#githubicon {
+    mask-image: url(/img/github.svg);
+}
+#rssicon {
+    mask-image: url(/img/rss.svg);
+}
+
+#twittericon:hover {
+    background-color: #1DA1F2;
+}
+
+#githubicon:hover {
+    background-color: #6e5494;
+}
+#rssicon:hover {
+    background-color: #ef6d2f;
 }
