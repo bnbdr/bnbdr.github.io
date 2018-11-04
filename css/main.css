@@ -956,6 +956,7 @@ section.icons .content a div.backicon {
 }
 
 #twittericon {
+    -webkit-mask-image:url(/img/twitter.svg);
     mask-image: url(/img/twitter.svg);
     margin-left: 12px;
     margin-right: 12px;
@@ -965,9 +966,11 @@ section.icons .content a div.backicon {
 }
 
 #githubicon {
+    -webkit-mask-image:url(/img/github.svg);
     mask-image: url(/img/github.svg);
 }
 #rssicon {
+    -webkit-mask-image:url(/img/rss.svg);
     mask-image: url(/img/rss.svg);
 }
 
