@@ -886,6 +886,7 @@ div.inpost-desc {
 
 #tags-single .posttag {
     display: inline-block;
+    margin-right:5px;
     margin-bottom: 5px;
 }
 
