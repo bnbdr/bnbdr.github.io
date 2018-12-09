@@ -721,6 +721,8 @@ section.main .content .markdown div.highlight pre {
     /* default color when syntax doesnt have anything*/
     background-color: inherit !important;
     /*so syntax would take over*/
+    white-space:pre;
+    overflow-x:auto;
 }
 
 section.main .content .markdown code {
@@ -851,6 +853,8 @@ section.main .content .markdown table {
     width: 100%;
     border: 1px solid #e5e5e5;
     border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
 }
 
 section.main .content .markdown td,
@@ -861,6 +865,9 @@ section.main .content .markdown th {
 
 section.main .content .markdown tbody tr:nth-child(odd) td,
 section.main .content .markdown tbody tr:nth-child(odd) th {
+    /* background-color: #f7f7f7; */
+}
+section.main .content .markdown th{
     background-color: #f7f7f7;
 }
 
