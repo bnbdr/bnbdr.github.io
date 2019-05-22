@@ -20,7 +20,7 @@
 
     <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>$ret</span><span style=color:#f8f8f2>;</span>
 <span style=color:#f8f8f2>}</span>
-</code></pre></div><h3 id=unauthenticated-file-upload-cve-2019-9951-https-cve-mitre-org-cgi-bin-cvename-cgi-name-cve-2019-9951>Unauthenticated file upload (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9951">CVE-2019-9951</a>)</h3><p>By looking around the all the &ldquo;lovely&rdquo; PHP code, I stumbled upon one web-accessible file that failed to use the above <code>login_check</code> function correctly, allowing unauthenticated file uploads to the device:</p><div class=highlight style=background:#272822><pre style=line-height:125%><code class=language-javascript data-lang=javascript><span></span><span style=color:#75715e>/* found in:</span>
+</code></pre></div><h3 id=unauthenticated-file-upload-cve-2019-9951-https-cve-mitre-org-cgi-bin-cvename-cgi-name-cve-2019-9951>Unauthenticated file upload (<a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9951">CVE-2019-9951</a>)</h3><p>By looking around all that &ldquo;lovely&rdquo; PHP code I stumbled upon one web-accessible file that failed to use the above <code>login_check</code> function correctly, allowing unauthenticated file uploads to the device:</p><div class=highlight style=background:#272822><pre style=line-height:125%><code class=language-javascript data-lang=javascript><span></span><span style=color:#75715e>/* found in:</span>
 <span style=color:#75715e>    firmware/module/crfs/web/pages/jquery/uploader/uploadify.php </span>
 <span style=color:#75715e>*/</span>
 
@@ -49,7 +49,7 @@
     <span style=color:#f8f8f2>}</span>
 <span style=color:#f8f8f2>}</span>
 <span style=color:#75715e>/* upload logic here */</span>
-</code></pre></div><p>However, this is not enought for exploitation since the aptly named <code>uploadify.php</code> will perform a (somewhat buggy) check on the target path and will only allow writes to specific locations:</p><div class=highlight style=background:#272822><pre style=line-height:125%><code class=language-javascript data-lang=javascript><span></span><span style=color:#75715e>/* found in:</span>
+</code></pre></div><p>However, this is not enough for exploitation since the aptly named <code>uploadify.php</code> will perform a (somewhat buggy) check on the target path and will only allow writes to specific locations:</p><div class=highlight style=background:#272822><pre style=line-height:125%><code class=language-javascript data-lang=javascript><span></span><span style=color:#75715e>/* found in:</span>
 <span style=color:#75715e>      firmware/module/crfs/web/pages/lib/login_checker.php </span>
 <span style=color:#75715e>*/</span>
 
